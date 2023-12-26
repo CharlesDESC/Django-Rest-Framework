@@ -4,7 +4,11 @@ from .models import Concessionnaire, Voiture
 class ConcessionnaireSerializer(serializers.ModelSerializer):
     class Meta:
         model = Concessionnaire
-        exclude = ['numero_siret']
+        fields = '__all__'
+        extra_kwargs = {
+            'numero_siret': {'write_only': True},
+        }
+
 
 class VoitureSerializer(serializers.ModelSerializer):
     class Meta:
